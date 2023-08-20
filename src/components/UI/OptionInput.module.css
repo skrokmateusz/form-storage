@@ -1,0 +1,55 @@
+select {
+    margin-top: 0.5rem;
+	padding: 1.4rem 2.8rem 1.4rem 1.4rem;
+	color: #000;
+	border: 1px solid #c8c8c8;
+	background-color: #fff;
+	border-radius: 0.5rem;
+	font-size: 1.6rem;
+    width: 100%;
+
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: .2px;
+    font-weight: 500;
+}
+
+.input {
+    padding: 1rem 0;
+}
+
+.input:focus-within {
+	color: #214bff;
+}
+
+select:hover {
+  border: 1px solid #8f8f8f;
+}
+
+select:focus {
+  border: 1px solid #214bff;
+  color: #000;
+}
+
+select:active {
+  color: #000;
+}
+
+.input label {
+  font-size: 1.4rem;
+}
+
+@media (min-width: 992px) {
+    select {
+      width: 430px;
+    }
+
+    .input {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    
+    }
+    label {
+      width: 235px;
+    }
+  }

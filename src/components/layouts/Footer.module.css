@@ -1,0 +1,12 @@
+.footer {
+	padding: 4rem 2rem 4rem 2rem;
+	text-align: right;
+	border-bottom: 1px solid #ccc;
+}
+
+@media (min-width: 992px) {
+
+	.footer {
+		padding: 4rem 0rem;
+	}
+}

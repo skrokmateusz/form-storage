@@ -1,0 +1,37 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-button {
+    padding: 0 2.5rem;
+    margin-right: 1rem;
+    border: 1px solid #c8c8c8;
+    background-color: #fff;
+    height: 45px;
+    width: 45px;
+}
+
+.active-two  {
+	color: #214bff
+}
+
+@media (min-width: 576px) {
+    .back-button {
+      width: 210px;
+      padding: 1.5rem 3rem;
+      color: #fff;
+      background-color: #c8c8c8;
+      border-radius: 0.5rem;
+      border: none;
+      font-weight: bold;
+    }
+
+    .back-button::before {
+      content: 'Poprzedni krok';
+    }
+
+    .back-button:hover {
+      background-color: #214bff;
+    }
+  }

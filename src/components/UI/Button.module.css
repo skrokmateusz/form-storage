@@ -1,0 +1,38 @@
+button {
+  width: 100%;
+	padding: 1.5rem 3rem;
+	color: #fff;
+	background-color: #214bff;
+	border-radius: 0.5rem;
+	border: none;
+	font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
+/* button::before {
+    display: block;
+    position: absolute;
+    content: "";
+    z-index: 1;
+    top: 600px;
+    left: 750px;
+    height: 40px;
+    width: 100px;
+    background-image: linear-gradient(-90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    transform: rotate(50deg);
+    transition: left 0.5s;
+  }
+  
+  button:hover::before {
+    left: 85%;
+  } */
+
+  @media (min-width: 576px) {
+    button {
+      width: 21rem;
+    }
+  }

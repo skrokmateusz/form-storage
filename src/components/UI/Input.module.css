@@ -1,0 +1,49 @@
+.input {
+	padding: 1rem 0;
+}
+
+.input label {
+	font-size: 1.4rem;
+}
+
+.input input {
+	padding: 1.4rem;
+	margin-top: 0.5rem;
+	color: #000;
+	font-size: 1.6rem;
+	/* border: 1px solid #c8c8c8; */
+	border-radius: 0.5rem;
+	width: 100%;
+	transition: border 0.1s linear;
+	font-family: 'Poppins', sans-serif;
+	letter-spacing: 0.2px;
+	font-weight: 500;
+	outline: none;
+}
+
+
+.input:focus-within {
+	color: #214bff;
+}
+
+.input input:focus {
+	border: 1px solid #214bff;
+	color: #000;
+}
+
+@media (min-width: 992px) {
+	.input input {
+		width: 435px;
+	}
+
+	.input label {
+		width: 235px;
+	}
+
+	.input {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		letter-spacing: 0.2px;
+	}
+}

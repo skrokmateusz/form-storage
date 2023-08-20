@@ -1,0 +1,36 @@
+header {
+	padding: 2.8rem 2rem;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	font-size: 2.2rem;
+	font-weight: 700;
+}
+
+.title {
+    display: block;
+}
+
+.title p {
+    margin: 0;
+}
+
+.normal-title {
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.highlighted-title {
+	font-size: 22px;
+}
+
+@media (min-width: 992px) {
+    header {
+		display: flex;
+		justify-content: space-between;
+		/* padding: 2.8rem 0rem; */
+		padding: 4.4rem 6rem 3.8rem 6rem;
+		/* margin: 0rem 2.8rem; */
+		border-bottom: 1px solid #ccc;
+		border-top: none;
+	}
+}
