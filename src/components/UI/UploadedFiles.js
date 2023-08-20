@@ -1,6 +1,6 @@
-import LoadingSpinner from './LoadingSpinner'
+// import LoadingSpinner from './LoadingSpinner'
 
-import classes from './FileInput.module.css'
+// import classes from './FileInput.module.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'

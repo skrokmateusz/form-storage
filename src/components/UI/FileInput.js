@@ -1,26 +1,30 @@
 import { useState, useRef, useEffect, Suspense } from 'react'
-import { useLoaderData, Await } from 'react-router-dom'
-import LoadingSpinner from './LoadingSpinner'
+import { Await, useRouteLoaderData, useLoaderData } from 'react-router-dom'
 import UploadedFiles from './UploadedFiles'
 
 import { storage } from '../firebase/firebase'
-import { ref, uploadBytes, deleteObject, listAll, getDownloadURL } from 'firebase/storage'
+import { ref, uploadBytes, listAll } from 'firebase/storage'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faXmark } from '@fortawesome/free-solid-svg-icons'
+
+// import { ref, listAll } from 'firebase/storage'
+// import { storage } from '../firebase/firebase'
 
 import classes from './FileInput.module.css'
 
 const FileInput = props => {
+	// const uploadedDataRoute = useRouteLoaderData('loadedFiles')
+	// console.log(uploadedDataRoute);
 	const uploadedData = useLoaderData()
 	console.log(uploadedData)
-	const [isSubmitting, setIsSubmitting] = useState(false)
-	const [didSubmit, setDidSubmit] = useState(false)
+	// const [isSubmitting, setIsSubmitting] = useState(false)
+	// const [didSubmit, setDidSubmit] = useState(false)
 	const [files, setFiles] = useState(null)
-	const [imageList, setImageList] = useState([])
+	// const [imageList, setImageList] = useState([])
 
 	const inputRef = useRef()
-	const imageListRef = ref(storage, 'images/')
+	// const imageListRef = ref(storage, 'images/')
 
 	const handleDragOver = event => {
 		event.preventDefault()
@@ -48,14 +52,13 @@ const FileInput = props => {
 	//Upload files
 	useEffect(() => {
 		if (files != null) {
-			setIsSubmitting(true)
-
+			// setIsSubmitting(true)
 			files.forEach(file => {
 				const fileRef = ref(storage, `images/${file.name}`)
 				// setImageList(prev => [...prev, file.name])
 				uploadBytes(fileRef, file).then(() => {
-					setIsSubmitting(false)
-					setDidSubmit(true)
+					// setIsSubmitting(false)
+					// setDidSubmit(true)
 				})
 			})
 		} else {
@@ -75,9 +78,6 @@ const FileInput = props => {
 				</p>
 				<input type="file" hidden multiple onChange={addFiles} ref={inputRef} />
 			</div>
-			{/* {data && (
-				<UploadedFiles />
-			)} */}
 
 			<Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
 				<Await resolve={uploadedData}>{loadedFiles => <UploadedFiles uploadFiles={loadedFiles} />}</Await>
@@ -92,6 +92,6 @@ export const loader = async () => {
 	const imageListRef = ref(storage, 'images')
 	const response = await listAll(imageListRef)
 	const data = response.items.map(item => item.name)
-console.log(data);
+
 	return data
 }

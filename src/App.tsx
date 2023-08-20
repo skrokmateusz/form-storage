@@ -14,6 +14,7 @@ const router = createBrowserRouter([
 				path: ':typeId',
 				element: <CartRegistration />,
 				loader: loaderFiles,
+				id: 'loadedFiles',
 			},
 			{ path: ':typeId/submission', element: <CartSubmissionComplain /> },
 		],

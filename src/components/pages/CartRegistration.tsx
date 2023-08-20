@@ -1,5 +1,5 @@
-import { Suspense } from 'react'
-import { useParams, useLoaderData, Await } from 'react-router-dom'
+
+import { useParams} from 'react-router-dom'
 
 import Card from '../UI/Card'
 import Header from '../layouts/Header'
@@ -8,7 +8,7 @@ import Footer from '../layouts/Footer'
 import MainProductComplain from '../layouts/MainProductComplain'
 import MainProduct from '../layouts/MainProduct'
 
-// import { ref, uploadBytes, deleteObject, listAll, getDownloadURL } from 'firebase/storage'
+// import { ref, listAll } from 'firebase/storage'
 // import { storage } from '../firebase/firebase'
 
 import classes from './CartRegistration.module.css'
@@ -16,9 +16,6 @@ import classes from './CartRegistration.module.css'
 
 const CartRegistration: React.FC = () => {
 	const param = useParams()
-	// const {data} = useLoaderData() as {data: string[]}
-	// console.log('pobieranie danych')
-	// console.log(data)
 
 	return (
 		<div>
@@ -39,6 +36,5 @@ export default CartRegistration
 // 	const response = await listAll(imageListRef)
 // 	const data = response.items.map(item => item.name)
 
-// 	return {data}
+// 	return data
 // }
-

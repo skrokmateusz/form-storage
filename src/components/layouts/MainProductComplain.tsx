@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useState, FormEvent, Suspense } from 'react'
-import { useNavigate, Await } from 'react-router-dom'
+import { useState, FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import useInput from '../hooks/use-input'
