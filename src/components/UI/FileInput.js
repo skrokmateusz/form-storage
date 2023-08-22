@@ -36,7 +36,7 @@ const FileInput = () => {
 			const uploadedFilesFunction = async () => {
 				const imageListRef = ref(storage, 'images')
 				const response = await listAll(imageListRef)
-				const data = await Promise.all(response.items.map(item => item.name))
+				const data = await (response.items.map(item => item.name))
 				setUploadedFiles(data)
 			}
 			uploadedFilesFunction()
