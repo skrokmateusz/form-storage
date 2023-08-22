@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import Card from '../UI/Card'
@@ -14,6 +14,12 @@ import classes from './CartSubmission.module.css'
 const CartSubmissionComplain: React.FC = props => {
 	const param = useParams()
 
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+	}, [])
 
 	let normalTitle
 	if (param.typeId === 'complain') {

@@ -31,6 +31,11 @@ const MainSubmissionComplain: React.FC = props => {
 
 	const previousData = useSelector((state: any) => state.data)
 
+	const previousButtonHandler = () => {
+		navigate(`../${param.typeId}`)
+		dispatch(dataActions.addUserData({ ...userData }))
+	}
+
 	const {
 		value: enteredName,
 		isValid: enteredNameIsValid, //tylko do sprawdzenia poprawności całego formularza
@@ -100,10 +105,7 @@ const MainSubmissionComplain: React.FC = props => {
 		return userData
 	}
 
-	const previousButtonHandler = () => {
-		dispatch(dataActions.addUserData({ ...userData }))
-		navigate(`../${param.typeId}`)
-	}
+
 
 	const hideResultCart = () => {
 		setShowCartResult(false)

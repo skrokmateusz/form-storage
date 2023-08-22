@@ -1,5 +1,5 @@
-
-import { useParams} from 'react-router-dom'
+import { useState } from 'react'
+import { useLoaderData, useParams } from 'react-router-dom'
 
 import Card from '../UI/Card'
 import Header from '../layouts/Header'
@@ -8,14 +8,21 @@ import Footer from '../layouts/Footer'
 import MainProductComplain from '../layouts/MainProductComplain'
 import MainProduct from '../layouts/MainProduct'
 
-// import { ref, listAll } from 'firebase/storage'
-// import { storage } from '../firebase/firebase'
+import { ref, listAll } from 'firebase/storage'
+import { storage } from '../firebase/firebase'
 
 import classes from './CartRegistration.module.css'
+import { useEffect } from 'react'
 // import { dataActions } from '../../store/data'
 
 const CartRegistration: React.FC = () => {
 	const param = useParams()
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+	}, [])
 
 	return (
 		<div>
