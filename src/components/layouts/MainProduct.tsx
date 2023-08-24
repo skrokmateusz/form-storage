@@ -7,6 +7,7 @@ import useInput from '../hooks/use-input'
 import useOptionInput from '../hooks/use-optionInput'
 import Input from '../UI/Input'
 import OptionInput from '../UI/OptionInput'
+import FileInput from '../UI/FileInput'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
@@ -69,6 +70,8 @@ const MainProductQuestion: React.FC = () => {
 		dispatch(dataActions.addData({ ...data }))
 		navigate('submission')
 	}
+
+
 
 	return (
 		<form onSubmit={submitHandler}>
@@ -135,6 +138,21 @@ const MainProductQuestion: React.FC = () => {
 				</div>
 				<div className={classes['invalid-input']}>
 					{hasMessageError || (nextStepClicked && !enteredMessage) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+				</div>
+				<div className={classes['dragdrop-div']}>
+					<label htmlFor="text">
+						<div className={classes.description}>Prosimy o dołączenie zdjęć opakowania i produktu</div>
+						<div>
+							<a
+								href="#"
+								className={classes.tips}
+								data-tip="Prosimy o zrobienie zdjęć min. całego opakowania oraz zamknięcia. Mile widzane będą zdjęcia każdej strony produktu">
+								<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
+							</a>
+						</div>
+					</label>
+
+					<FileInput />
 				</div>
 
 			

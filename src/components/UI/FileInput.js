@@ -16,27 +16,18 @@ const FileInput = () => {
 	useEffect(() => {
 		if (files) {
 			files.forEach(file => {
-				const fileRef = ref(storage, `images/${file.name}`)
-				uploadBytes(fileRef, file)
+				const fileRef = ref(storage, `images/${file.name}${Math.random().toFixed(8)}`)
+				uploadBytes(fileRef, file).then(async snapshot => {
+					setUploadedFiles(prev => [...prev, snapshot.metadata.name])
+					console.log(uploadedFiles)
+				})
 			})
-
-			setTimeout(() => {
-				const imageListRef = ref(storage, 'images')
-				const uploadedFilesFunction = async () => {
-					// const fileRef = ref(storage, `images/${files[0].name}`)
-					// await uploadBytes(fileRef, files[0])
-					const response = await listAll(imageListRef)
-					const data = await response.items.map(item => item.name)
-					setUploadedFiles(data)
-				}
-				uploadedFilesFunction()
-			}, 2000)
 		}
 		if (!files) {
 			const uploadedFilesFunction = async () => {
 				const imageListRef = ref(storage, 'images')
 				const response = await listAll(imageListRef)
-				const data = await (response.items.map(item => item.name))
+				const data = await response.items.map(item => item.name)
 				setUploadedFiles(data)
 			}
 			uploadedFilesFunction()
@@ -61,20 +52,27 @@ const FileInput = () => {
 		deleteObject(fileListRef)
 	}
 
+	setTimeout(() => {
+		uploadedFiles.forEach(item => {
+			const fileListRef = ref(storage, `images/${item}`)
+			deleteObject(fileListRef)
+		})
+	}, 20 * 60 * 1000)
+
 	return (
 		<div className={classes.container}>
 			<div className={classes.dragdrop} onClick={() => inputRef.current.click()}>
 				<p className={classes.header}>
-					<span>Choose</span>
+					<span>Wybierz</span> pliki z dysku
 				</p>
 				<input type="file" hidden multiple onChange={addFiles} ref={inputRef} />
 			</div>
 
-			<ul>
+			<ul className={classes.list}>
 				{uploadedFiles &&
 					uploadedFiles.map(file => (
 						<li key={file} id={file} onClick={() => removeFile(file)}>
-							<p>{file}</p>
+							<p>{file.slice(0, -10)}</p>
 							<span>{<FontAwesomeIcon icon={faXmark} />}</span>
 						</li>
 					))}

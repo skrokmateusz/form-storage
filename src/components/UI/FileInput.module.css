@@ -35,7 +35,7 @@
 	color: #000000;
 }
 
-ul {
+.list {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -44,12 +44,12 @@ ul {
 	width: 100%;
 }
 
-ul span {
+.list span {
 	font-size: 2rem;
 	color: #fff;
 }
 
-li {
+.list li {
 	padding: 1rem;
 	height: 4.6rem;
 	margin-bottom: 1rem;
@@ -61,16 +61,16 @@ li {
 	justify-content: space-between;
 }
 
-li p {
+.list li p {
 	max-width: 80%;
 	overflow: hidden;
 }
 
-li:first-child {
+.list li:first-child {
 	margin-top: 1rem;
 }
 
-li:last-child {
+.list li:last-child {
 	margin-bottom: 0;
 }
 

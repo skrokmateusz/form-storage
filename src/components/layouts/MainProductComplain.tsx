@@ -241,10 +241,6 @@ const MainProductComplain: React.FC = () => {
 						</div>
 					</label>
 
-					{/* <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
-						<Await resolve={props.uploadFiles}>{uploadFiles => <FileInput uploadFiles={uploadFiles} />}</Await>
-					</Suspense> */}
-
 					<FileInput />
 				</div>
 
