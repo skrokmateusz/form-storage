@@ -40,10 +40,7 @@ const Progressbar = () => {
 
 	const step3 = (
 		<ol className={classes.steps}>
-			<li
-				className={`${classes.step} ${classes['is-complete']}`}
-				data-step="1"
-				onClick={backHomePage}></li>
+			<li className={`${classes.step} ${classes['is-complete']}`} data-step="1" onClick={backHomePage}></li>
 			<li
 				className={`${classes.step} ${classes['is-complete']}`}
 				data-step="2"

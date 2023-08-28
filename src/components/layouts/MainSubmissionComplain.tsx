@@ -1,19 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FormEvent, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams, useNavigation, Form } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { useParams, useNavigation, Form, useNavigate } from 'react-router-dom'
 
 import Input from '../UI/Input'
 import useInput from '../hooks/use-input'
-import useOptionInput from '../hooks/use-optionInput'
+import useInputNotRequired from '../hooks/use-inputnotrequired'
 import CartResult from '../pages/CartResult'
-
-import classes from './MainProductComplain.module.css'
-import { dataActions } from '../store/data'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
+
+import { dataActions } from '../store/data'
+
+import classes from './MainProductComplain.module.css'
 
 const regExpEmail =
 	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -38,31 +38,33 @@ const MainSubmissionComplain: React.FC = props => {
 
 	const {
 		value: enteredName,
-		isValid: enteredNameIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasNameError, //do ustawienia klasy czy błędzie
+		isValid: enteredNameIsValid,
+		hasError: hasNameError,
 		valueChangeHandler: nameChangeHandler,
 		inputBlurHandler: nameBlurHandler,
 	} = useInput((value: string) => value !== '', previousData.userData.nameSurname)
 
 	const {
 		value: enteredEmail,
-		isValid: enteredEmailIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasEmailError, //do ustawienia klasy czy błędzie
+		isValid: enteredEmailIsValid,
+		hasError: hasEmailError,
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
 	} = useInput((value: string) => value.match(regExpEmail), previousData.userData.email)
 
 	const {
 		value: enteredNumber,
-		isValid: enteredNumberIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasNumberError, //do ustawienia klasy czy błędzie
+		isValid: enteredNumberIsValid,
+		hasError: hasNumberError,
 		valueChangeHandler: numberChangeHandler,
 		inputBlurHandler: numberBlurHandler,
 	} = useInput((value: string) => value.match(regExpNumber), previousData.userData.phoneNumber)
 
-	const { value: enteredAdress, valueChangeHandler: adressHandler } = useOptionInput(previousData.userData.adress)
-	const { value: enteredZipCode, valueChangeHandler: zipCodeHandler } = useOptionInput(previousData.userData.zipCode)
-	const { value: enteredCity, valueChangeHandler: cityHandler } = useOptionInput(previousData.userData.city)
+	const { value: enteredAdress, valueChangeHandler: adressHandler } = useInputNotRequired(previousData.userData.adress)
+	const { value: enteredZipCode, valueChangeHandler: zipCodeHandler } = useInputNotRequired(
+		previousData.userData.zipCode
+	)
+	const { value: enteredCity, valueChangeHandler: cityHandler } = useInputNotRequired(previousData.userData.city)
 
 	const correctContent = enteredNameIsValid && enteredEmailIsValid && enteredNumberIsValid
 

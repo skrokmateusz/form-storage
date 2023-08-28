@@ -12,7 +12,6 @@ const Header: React.FC<{ normalTitle: string; highlightedTitle: string }> = prop
 			<div className={classes.bar}>
 				<Progressbar />
 			</div>
-			{/* <ProgressBar onClickOne={props.onClickOne} onClickTwo={props.onClickTwo} classNameTwo={props.classNameTwo} classNameThree={props.classNameThree}/> */}
 		</header>
 	)
 }

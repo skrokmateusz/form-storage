@@ -7,6 +7,7 @@ import useInput from '../hooks/use-input'
 import CartResult from '../pages/CartResult'
 
 import { dataActions } from '../store/data'
+
 import classes from './MainProductComplain.module.css'
 
 const regE =
@@ -25,16 +26,16 @@ const MainSubmission: React.FC<{}> = props => {
 
 	const {
 		value: enteredName,
-		isValid: enteredNameIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasNameError, //do ustawienia klasy czy błędzie
+		isValid: enteredNameIsValid,
+		hasError: hasNameError,
 		valueChangeHandler: nameChangeHandler,
 		inputBlurHandler: nameBlurHandler,
 	} = useInput((value: string) => value !== '', previousData.userData.nameSurname)
 
 	const {
 		value: enteredEmail,
-		isValid: enteredEmailIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasEmailError, //do ustawienia klasy czy błędzie
+		isValid: enteredEmailIsValid,
+		hasError: hasEmailError,
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
 	} = useInput((value: string) => value.match(regE), previousData.userData.email)

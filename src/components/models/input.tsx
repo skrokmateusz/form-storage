@@ -11,10 +11,10 @@ interface InputType {
 export default InputType
 
 
-// export interface OptionInputType {
-// 	types: string
-// 	id: string
-// 	value: string
-// 	onChange: (event: ChangeEvent) => void
-// 	onBlur: () => void
-// }
+export interface OptionInputType {
+	types: string
+	id: string
+	value: string
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void
+	onBlur: () => void
+}

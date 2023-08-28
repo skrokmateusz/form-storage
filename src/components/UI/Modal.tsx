@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+
 import classes from './Modal.module.css'
 
 const Backdrop: React.FC<{ onClick: () => void }> = props => {

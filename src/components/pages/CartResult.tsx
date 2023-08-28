@@ -1,20 +1,9 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 
 import Modal from '../UI/Modal'
-// import Button from '../UI/Button'
 import LoadingSpinner from '../UI/LoadingSpinner'
-// import { navActions } from '../../store/navigation'
-// import { valActions } from '../../store/validity'
-
-// import classes from './CartResult.module.css'
 
 const CartResult: React.FC<{onClick: () => void, currectState: string, isError: boolean}> = (props) => {
-	const dispatch = useDispatch()
-	// const isSubmitting = useSelector(state => state.submit.isSubmitting)
-	// const didSubmit = useSelector(state => state.submit.didSubmit)
-	// const isError = useSelector(state => state.submit.isError)
-
 	const sendingForm = <LoadingSpinner classNameContainer='' classNameSpinner=''/>
 
 	const sentCorrectForm = (

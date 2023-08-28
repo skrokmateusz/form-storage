@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 
 import Button from '../UI/Button'
 import Header from '../layouts/Header'
@@ -14,7 +14,7 @@ const CartTypeAction: React.FC = () => {
 	}
 
 	return (
-		<Fragment>
+		<>
 			<Card>
 				<Header normalTitle="" highlightedTitle="Temat zgłoszenia" />
 				<MainFirstPage onChosenBox={onBox} />
@@ -22,7 +22,7 @@ const CartTypeAction: React.FC = () => {
 			<Footer className=''>
 				<Button to={`/${currentAction}`} className="" title="Następny krok" />
 			</Footer>
-		</Fragment>
+		</>
 	)
 }
 

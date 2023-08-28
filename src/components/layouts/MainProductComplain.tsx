@@ -5,14 +5,16 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import useInput from '../hooks/use-input'
 import useOptionInput from '../hooks/use-optionInput'
+import useInputNotRequired from '../hooks/use-inputnotrequired'
 import Input from '../UI/Input'
 import OptionInput from '../UI/OptionInput'
 import DateInput from '../UI/DateInput'
-import { dataActions } from '../store/data'
 import FileInput from '../UI/FileInput'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
+
+import { dataActions } from '../store/data'
 
 import classes from './MainProductComplain.module.css'
 
@@ -21,36 +23,35 @@ const MainProductComplain: React.FC = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const savedData = useSelector((state: any) => state.registrationData)
-	console.log(savedData)
 
 	const {
 		value: enteredFlavour,
-		isValid: enteredFlavourIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasFlavourError, //do ustawienia klasy czy błędzie
+		isValid: enteredFlavourIsValid,
+		hasError: hasFlavourError,
 		valueChangeHandler: flavourChangeHandler,
 		inputBlurHandler: flavourBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.flavour)
 
 	const {
 		value: enteredExpirationDate,
-		isValid: enteredExpirationDateIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasExpirationDateError, //do ustawienia klasy czy błędzie
+		isValid: enteredExpirationDateIsValid,
+		hasError: hasExpirationDateError,
 		valueChangeHandler: expirationDateChangeHandler,
 		inputBlurHandler: expirationDateBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.expirationDate)
 
 	const {
 		value: enteredMessage,
-		isValid: enteredMessageIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasMessageError, //do ustawienia klasy czy błędzie
+		isValid: enteredMessageIsValid,
+		hasError: hasMessageError,
 		valueChangeHandler: messageChangeHandler,
 		inputBlurHandler: messageBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.message)
 
 	const {
 		value: enteredPurchasePlace,
-		isValid: enteredPurchasePlaceIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasPurchasePlaceError, //do ustawienia klasy czy błędzie
+		isValid: enteredPurchasePlaceIsValid,
+		hasError: hasPurchasePlaceError,
 		valueChangeHandler: purchasePlaceChangeHandler,
 		inputBlurHandler: purchasePlaceBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.purchasePlace)
@@ -60,12 +61,14 @@ const MainProductComplain: React.FC = () => {
 	const { value: enteredPackageCapacity, valueChangeHandler: packageCapacityHandler } = useOptionInput(
 		savedData.packageCapacity
 	)
-	const { value: enteredPackageState, valueChangeHandler: packageStateHandler } = useOptionInput(savedData.packageState)
-	const { value: enteredPackageStorageBefore, valueChangeHandler: packageStorageBeforeHandler } = useOptionInput(
+	const { value: enteredPackageState, valueChangeHandler: packageStateHandler } = useInputNotRequired(
+		savedData.packageState
+	)
+	const { value: enteredPackageStorageBefore, valueChangeHandler: packageStorageBeforeHandler } = useInputNotRequired(
 		savedData.packageStorageBefore
 	)
 	const { value: enteredFirstOpen, valueChangeHandler: firstOpenHandler } = useOptionInput(savedData.firstOpen)
-	const { value: enteredPackageStorageAfter, valueChangeHandler: packageStorageAfterHandler } = useOptionInput(
+	const { value: enteredPackageStorageAfter, valueChangeHandler: packageStorageAfterHandler } = useInputNotRequired(
 		savedData.packageStorageAfter
 	)
 	const { value: enteredProductChange, valueChangeHandler: productChangeHandler } = useOptionInput(

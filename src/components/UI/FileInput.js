@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { storage } from '../firebase/firebase'
 import { ref, uploadBytes, listAll, deleteObject } from 'firebase/storage'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { dataActions } from '../store/data'
 
 import { v4 } from 'uuid'
+
+import { dataActions } from '../store/data'
 
 import classes from './FileInput.module.css'
 
@@ -71,9 +71,9 @@ const FileInput = () => {
 			<ul className={classes.list}>
 				{uploadedFiles &&
 					uploadedFiles.map(file => (
-						<li key={file} id={file} onClick={() => removeFile(file)}>
+						<li key={file} id={file} >
 							<p>{file.slice(0, -36)}</p>
-							<span>{<FontAwesomeIcon icon={faXmark} />}</span>
+							<span>{<FontAwesomeIcon icon={faXmark} onClick={() => removeFile(file)}/>}</span>
 						</li>
 					))}
 			</ul>

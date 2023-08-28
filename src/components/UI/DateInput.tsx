@@ -1,7 +1,8 @@
 import classes from './DateInput.module.css'
+import { OptionInputType } from '../models/input';
 
 const DateInput: React.FC<{
-	input: { types: string; id: string; value: string; onChange: () => void; onBlur: () => void }
+	input: OptionInputType
 	label: string
 }> = props => {
 	return (

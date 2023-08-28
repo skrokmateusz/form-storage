@@ -24,24 +24,24 @@ const MainProductQuestion: React.FC = () => {
 
 	const {
 		value: enteredFlavour,
-		isValid: enteredFlavourIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasFlavourError, //do ustawienia klasy czy błędzie
+		isValid: enteredFlavourIsValid,
+		hasError: hasFlavourError,
 		valueChangeHandler: flavourChangeHandler,
 		inputBlurHandler: flavourBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.flavour)
 
 	const {
 		value: enteredExpirationDate,
-		isValid: enteredExpirationDateIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasExpirationDateError, //do ustawienia klasy czy błędzie
+		isValid: enteredExpirationDateIsValid,
+		hasError: hasExpirationDateError,
 		valueChangeHandler: expirationDateChangeHandler,
 		inputBlurHandler: expirationDateBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.expirationDate)
 
 	const {
 		value: enteredMessage,
-		isValid: enteredMessageIsValid, //tylko do sprawdzenia poprawności całego formularza
-		hasError: hasMessageError, //do ustawienia klasy czy błędzie
+		isValid: enteredMessageIsValid,
+		hasError: hasMessageError,
 		valueChangeHandler: messageChangeHandler,
 		inputBlurHandler: messageBlurHandler,
 	} = useInput((value: string) => value !== '', savedData.message)
@@ -74,8 +74,6 @@ const MainProductQuestion: React.FC = () => {
 		dispatch(dataActions.addData({ ...data }))
 		navigate('submission')
 	}
-
-
 
 	return (
 		<form onSubmit={submitHandler}>
@@ -159,7 +157,6 @@ const MainProductQuestion: React.FC = () => {
 					<FileInput />
 				</div>
 
-			
 				<OptionInput
 					className=""
 					label="Rodzaj opakowania"
