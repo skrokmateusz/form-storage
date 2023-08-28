@@ -15,7 +15,7 @@ const CartResult: React.FC<{onClick: () => void, currectState: string, isError: 
 	// const didSubmit = useSelector(state => state.submit.didSubmit)
 	// const isError = useSelector(state => state.submit.isError)
 
-	const sendingForm = <LoadingSpinner />
+	const sendingForm = <LoadingSpinner classNameContainer='' classNameSpinner=''/>
 
 	const sentCorrectForm = (
 		<React.Fragment>

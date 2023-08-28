@@ -20,7 +20,7 @@ const MainProductQuestion: React.FC = () => {
 	const [nextStepClicked, setNextStepClicked] = useState<boolean>(false)
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
-	const savedData = useSelector((state: any) => state.data.data.registrationData)
+	const savedData = useSelector((state: any) => state.registrationData)
 
 	const {
 		value: enteredFlavour,
@@ -65,6 +65,10 @@ const MainProductQuestion: React.FC = () => {
 		e.preventDefault()
 		setNextStepClicked(true)
 		if (!correctContent) {
+			window.scrollTo({
+				top: 250,
+				behavior: 'smooth',
+			})
 			return
 		}
 		dispatch(dataActions.addData({ ...data }))
@@ -203,6 +207,7 @@ const MainProductQuestion: React.FC = () => {
 				<button
 					onClick={() => {
 						dispatch(dataActions.defaultData())
+						dispatch(dataActions.addId(''))
 						navigate(`..`)
 					}}>
 					Poprzedni krok

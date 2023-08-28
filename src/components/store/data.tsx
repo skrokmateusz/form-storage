@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-	data: {
-		registrationData: {},
-		userData: {},
-		uploadFiles: [],
-	},
+	registrationData: {},
+	userData: {},
+	id: '',
 }
 
 const dataSlice = createSlice({
@@ -14,7 +12,7 @@ const dataSlice = createSlice({
 	reducers: {
 		addData(state, action) {
 			const newData = action.payload
-			state.data.registrationData = {
+			state.registrationData = {
 				flavour: newData.flavour,
 				expirationDate: newData.expirationDate,
 				message: newData.message,
@@ -31,7 +29,7 @@ const dataSlice = createSlice({
 		},
 		addUserData(state, action) {
 			const newUserData = action.payload
-			state.data.userData = {
+			state.userData = {
 				nameSurname: newUserData.nameSurname,
 				email: newUserData.email,
 				phoneNumber: newUserData.phoneNumber,
@@ -40,13 +38,12 @@ const dataSlice = createSlice({
 				city: newUserData.city,
 			}
 		},
-		uploadFiles(state, action) {
-			const newUploadfiles = action.payload
-			state.data.uploadFiles = newUploadfiles
-		},
 		defaultData(state) {
-			state.data.userData = {}
-			state.data.registrationData = {}
+			state.userData = {}
+			state.registrationData = {}
+		},
+		addId(state, action) {
+			state.id = action.payload
 		},
 	},
 })

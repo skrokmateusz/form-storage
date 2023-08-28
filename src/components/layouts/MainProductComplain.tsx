@@ -20,7 +20,8 @@ const MainProductComplain: React.FC = () => {
 	const [nextStepClicked, setNextStepClicked] = useState<boolean>(false)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const savedData = useSelector((state: any) => state.data.data.registrationData)
+	const savedData = useSelector((state: any) => state.registrationData)
+	console.log(savedData)
 
 	const {
 		value: enteredFlavour,
@@ -71,10 +72,6 @@ const MainProductComplain: React.FC = () => {
 		savedData.productChange
 	)
 
-	// const uploadPicture = picture => {
-	// 	setAttachedPicture(picture)
-	// }
-
 	const correctContent =
 		enteredFlavourIsValid &&
 		enteredExpirationDateIsValid &&
@@ -103,6 +100,10 @@ const MainProductComplain: React.FC = () => {
 		e.preventDefault()
 		setNextStepClicked(true)
 		if (!correctContent) {
+			window.scrollTo({
+				top: 300,
+				behavior: 'smooth',
+			})
 			return
 		}
 		dispatch(dataActions.addData({ ...data }))
@@ -342,6 +343,7 @@ const MainProductComplain: React.FC = () => {
 				<button
 					onClick={() => {
 						dispatch(dataActions.defaultData())
+						dispatch(dataActions.addId(''))
 						navigate(`..`)
 					}}>
 					Poprzedni krok

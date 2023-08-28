@@ -7,7 +7,7 @@ import useInput from '../hooks/use-input'
 import CartResult from '../pages/CartResult'
 
 import { dataActions } from '../store/data'
-import classes from './MainProductComplain.module.css'	
+import classes from './MainProductComplain.module.css'
 
 const regE =
 	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -21,7 +21,7 @@ const MainSubmission: React.FC<{}> = props => {
 	const navigate = useNavigate()
 	const navigation = useNavigation()
 
-	const previousData = useSelector((state: any) => state.data)
+	const previousData = useSelector((state: any) => state)
 
 	const {
 		value: enteredName,
@@ -29,7 +29,7 @@ const MainSubmission: React.FC<{}> = props => {
 		hasError: hasNameError, //do ustawienia klasy czy błędzie
 		valueChangeHandler: nameChangeHandler,
 		inputBlurHandler: nameBlurHandler,
-	} = useInput((value: string) => value !== '', previousData.data.userData.nameSurname)
+	} = useInput((value: string) => value !== '', previousData.userData.nameSurname)
 
 	const {
 		value: enteredEmail,
@@ -37,7 +37,7 @@ const MainSubmission: React.FC<{}> = props => {
 		hasError: hasEmailError, //do ustawienia klasy czy błędzie
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
-	} = useInput((value: string) => value.match(regE), previousData.data.userData.email)
+	} = useInput((value: string) => value.match(regE), previousData.userData.email)
 
 	const userData = {
 		nameSurname: enteredName,
@@ -56,7 +56,7 @@ const MainSubmission: React.FC<{}> = props => {
 		setShowCartResult(true)
 
 		dispatch(dataActions.addUserData({ ...userData }))
-		const newData = { ...previousData.data.registrationData, ...userData }
+		const newData = { id: previousData.id, ...previousData.registrationData, ...userData }
 
 		const sendData = async () => {
 			const response = await fetch(
@@ -80,8 +80,9 @@ const MainSubmission: React.FC<{}> = props => {
 
 	const hideResultCart = () => {
 		setShowCartResult(false)
-		navigate('..')
+		dispatch(dataActions.addId(''))
 		dispatch(dataActions.defaultData())
+		navigate('..')
 	}
 
 	return (
@@ -104,7 +105,7 @@ const MainSubmission: React.FC<{}> = props => {
 						{hasNameError || (sendFormClicked && !enteredName) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
 					</div>
 					<Input
-						className={`${hasEmailError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}	
+						className={`${hasEmailError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}
 						label="Adres e-mail *"
 						tips=""
 						input={{

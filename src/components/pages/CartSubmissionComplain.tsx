@@ -34,12 +34,8 @@ const CartSubmissionComplain: React.FC = props => {
 		<div>
 			<Card>
 				<Header
-					// classNameTwo={classes['active-two']}
-					// classNameThree={classes['active-three']}
 					normalTitle={normalTitle}
 					highlightedTitle="Dane kontaktowe"
-					// onClickOne={homePageHandler}
-					// onClickTwo={previousPageHandler}
 				/>
 				{param.typeId === 'complain' && <MainSubmissionComplain />}
 				{param.typeId === 'question' && <MainSubmission />}

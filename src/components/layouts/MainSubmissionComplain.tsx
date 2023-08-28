@@ -29,7 +29,7 @@ const MainSubmissionComplain: React.FC = props => {
 	const param = useParams()
 	const navigation = useNavigation()
 
-	const previousData = useSelector((state: any) => state.data)
+	const previousData = useSelector((state: any) => state)
 
 	const previousButtonHandler = () => {
 		navigate(`../${param.typeId}`)
@@ -42,7 +42,7 @@ const MainSubmissionComplain: React.FC = props => {
 		hasError: hasNameError, //do ustawienia klasy czy błędzie
 		valueChangeHandler: nameChangeHandler,
 		inputBlurHandler: nameBlurHandler,
-	} = useInput((value: string) => value !== '', previousData.data.userData.nameSurname)
+	} = useInput((value: string) => value !== '', previousData.userData.nameSurname)
 
 	const {
 		value: enteredEmail,
@@ -50,7 +50,7 @@ const MainSubmissionComplain: React.FC = props => {
 		hasError: hasEmailError, //do ustawienia klasy czy błędzie
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
-	} = useInput((value: string) => value.match(regExpEmail), previousData.data.userData.email)
+	} = useInput((value: string) => value.match(regExpEmail), previousData.userData.email)
 
 	const {
 		value: enteredNumber,
@@ -58,13 +58,11 @@ const MainSubmissionComplain: React.FC = props => {
 		hasError: hasNumberError, //do ustawienia klasy czy błędzie
 		valueChangeHandler: numberChangeHandler,
 		inputBlurHandler: numberBlurHandler,
-	} = useInput((value: string) => value.match(regExpNumber), previousData.data.userData.phoneNumber)
+	} = useInput((value: string) => value.match(regExpNumber), previousData.userData.phoneNumber)
 
-	const { value: enteredAdress, valueChangeHandler: adressHandler } = useOptionInput(previousData.data.userData.adress)
-	const { value: enteredZipCode, valueChangeHandler: zipCodeHandler } = useOptionInput(
-		previousData.data.userData.zipCode
-	)
-	const { value: enteredCity, valueChangeHandler: cityHandler } = useOptionInput(previousData.data.userData.city)
+	const { value: enteredAdress, valueChangeHandler: adressHandler } = useOptionInput(previousData.userData.adress)
+	const { value: enteredZipCode, valueChangeHandler: zipCodeHandler } = useOptionInput(previousData.userData.zipCode)
+	const { value: enteredCity, valueChangeHandler: cityHandler } = useOptionInput(previousData.userData.city)
 
 	const correctContent = enteredNameIsValid && enteredEmailIsValid && enteredNumberIsValid
 
@@ -87,16 +85,13 @@ const MainSubmissionComplain: React.FC = props => {
 		setShowCartResult(true)
 
 		dispatch(dataActions.addUserData({ ...userData }))
-		const newData = { ...previousData.data.registrationData, ...userData }
+		const newData = { id: previousData.id, ...previousData.registrationData, ...userData }
 
 		const sendData = async () => {
-			const response = await fetch(
-				'https://form-17894-default-rtdb.europe-west1.firebasedatabase.app/complain.json',
-				{
-					method: 'POST',
-					body: JSON.stringify(newData),
-				}
-			)
+			const response = await fetch('https://form-17894-default-rtdb.europe-west1.firebasedatabase.app/complain.json', {
+				method: 'POST',
+				body: JSON.stringify(newData),
+			})
 			if (!response.ok) {
 				setIsError(true)
 			}
@@ -105,12 +100,11 @@ const MainSubmissionComplain: React.FC = props => {
 		return userData
 	}
 
-
-
 	const hideResultCart = () => {
 		setShowCartResult(false)
-		navigate('..')
 		dispatch(dataActions.defaultData())
+		dispatch(dataActions.addId(''))
+		navigate('..')
 	}
 
 	return (
@@ -119,7 +113,9 @@ const MainSubmissionComplain: React.FC = props => {
 				<div className={classes.container}>
 					<Input
 						label="Imię i nazwisko *"
-						className={`${hasNameError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}
+						className={`${hasNameError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
+							sendFormClicked && !enteredNameIsValid ? `${classes.invalid} ${classes.input}` : classes.input
+						} `}
 						tips=""
 						input={{
 							types: 'text',
@@ -133,7 +129,9 @@ const MainSubmissionComplain: React.FC = props => {
 						{hasNameError || (sendFormClicked && !enteredName) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
 					</div>
 					<Input
-						className={`${hasEmailError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}
+						className={`${hasEmailError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
+							sendFormClicked && !enteredEmailIsValid ? `${classes.invalid} ${classes.input}` : classes.input
+						} `}
 						label="Adres e-mail *"
 						tips=""
 						input={{
@@ -150,7 +148,9 @@ const MainSubmissionComplain: React.FC = props => {
 					</div>
 
 					<Input
-						className={`${hasNumberError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}
+						className={`${hasNumberError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
+							sendFormClicked && !enteredNumberIsValid ? `${classes.invalid} ${classes.input}` : classes.input
+						} `}
 						label="Numer telefonu *"
 						tips=""
 						input={{

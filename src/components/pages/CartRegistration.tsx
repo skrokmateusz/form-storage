@@ -1,19 +1,13 @@
-import { useState } from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import Card from '../UI/Card'
 import Header from '../layouts/Header'
 import Footer from '../layouts/Footer'
-
 import MainProductComplain from '../layouts/MainProductComplain'
 import MainProduct from '../layouts/MainProduct'
 
-import { ref, listAll } from 'firebase/storage'
-import { storage } from '../firebase/firebase'
-
 import classes from './CartRegistration.module.css'
-import { useEffect } from 'react'
-// import { dataActions } from '../../store/data'
 
 const CartRegistration: React.FC = () => {
 	const param = useParams()
@@ -24,10 +18,19 @@ const CartRegistration: React.FC = () => {
 		})
 	}, [])
 
+	let normalTitle = ''
+	if (param.typeId === 'complain') {
+		normalTitle = 'Reklamacja produktowa'
+	} else if (param.typeId === 'question') {
+		normalTitle = 'Pytanie dotyczące produktu, składników, itd.'
+	} else {
+		normalTitle = 'Opinie, sugestie dotyczące produktów'
+	}
+
 	return (
 		<div>
 			<Card>
-				<Header normalTitle="do porpawy" highlightedTitle="Dane produktowe" />
+				<Header normalTitle={normalTitle} highlightedTitle="Dane produktowe" />
 				{param.typeId === 'complain' ? <MainProductComplain /> : null}
 				{param.typeId === 'question' || param.typeId === 'comment' ? <MainProduct /> : null}
 			</Card>
@@ -37,11 +40,3 @@ const CartRegistration: React.FC = () => {
 }
 
 export default CartRegistration
-
-// export const loader = async () => {
-// 	const imageListRef = ref(storage, 'images')
-// 	const response = await listAll(imageListRef)
-// 	const data = response.items.map(item => item.name)
-
-// 	return data
-// }
