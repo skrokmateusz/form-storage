@@ -22,15 +22,15 @@ const MainFirstPage: React.FC<{ onChosenBox: any }> = props => {
 		<div className={classes.container}>
 			<div onClick={choiceHandler} className={classesComplainBox} id="complain">
 				<FontAwesomeIcon icon={faCircleExclamation} className={classes.icon} />
-				<p>Reklamacja produktowa</p>
+				<p className={classes.text}>Reklamacja produktowa</p>
 			</div>
 			<div onClick={choiceHandler} className={classesQuestionBox} id="question">
 				<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
-				<p>Pytanie dotyczące produktu, składników, itd.</p>
+				<p className={classes.text}>Pytanie dotyczące produktu, składników, itd.</p>
 			</div>
 			<div onClick={choiceHandler} className={classesCommentBox} id="comment">
 				<FontAwesomeIcon icon={faMessage} className={classes.icon} />
-				<p>Opinie, sugestie dotyczące produktów</p>
+				<p className={classes.text}>Opinie, sugestie dotyczące produktów</p>
 			</div>
 		</div>
 	)

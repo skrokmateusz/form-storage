@@ -12,6 +12,18 @@
 	height: 105px;
 	font-weight: 500;
 	color: #c8c8c8;
+	position: relative;
+}
+
+.icon {
+	width: 105px;
+	font-size: 4.8rem;
+	position: absolute;
+}
+
+.text {
+	position: absolute;
+	left: 100px;
 }
 
 .choice-box-clicked {
@@ -25,23 +37,10 @@
 	color: #214bff;
 }
 
-.choice-box-clicked p {
+.choice-box-clicked .text {
+	position: relative;
 	color: black;
 	font-weight: 500;
-}
-
-.icon {
-	width: 105px;
-	font-size: 4.8rem;
-	text-align: center;
-	margin-bottom: 2rem;
-}
-
-.choice-box-clicked .icon {
-	width: 105px;
-	font-size: 4.8rem;
-	text-align: center;
-	margin-bottom: 2rem;
 }
 
 .choice-box:hover {
@@ -88,8 +87,13 @@
 		top: 4rem;
 	}
 
-	.choice-box p,
-	.choice-box-clicked p {
+	.text {
+		position: relative;
+		left: 0;
+	}
+
+	.choice-box .text,
+	.choice-box-clicked .text {
 		padding: 0 1.4rem;
 		text-align: center;
 		position: absolute;
