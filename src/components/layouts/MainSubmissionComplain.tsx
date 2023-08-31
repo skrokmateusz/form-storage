@@ -1,40 +1,40 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { FormEvent, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useParams, useNavigation, Form, useNavigate } from 'react-router-dom'
+import { FormEvent, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useNavigation, Form, useNavigate } from 'react-router-dom';
 
-import Input from '../UI/Input'
-import useInput from '../hooks/use-input'
-import useInputNotRequired from '../hooks/use-inputnotrequired'
-import CartResult from '../pages/CartResult'
+import Input from '../UI/Input';
+import useInput from '../hooks/use-input';
+import useInputNotRequired from '../hooks/use-inputnotrequired';
+import CartResult from '../pages/CartResult';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 
-import { dataActions } from '../store/data'
+import { dataActions } from '../store/data';
 
-import classes from './MainProductComplain.module.css'
+import classes from './MainProductComplain.module.css';
 
 const regExpEmail =
-	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const regExpNumber = /^\d{9}$/
+const regExpNumber = /^\d{9}$/;
 
 const MainSubmissionComplain: React.FC = props => {
-	const [sendFormClicked, setSendFormClicked] = useState<boolean>(false)
-	const [showCartResult, setShowCartResult] = useState<boolean>(false)
-	const [isError, setIsError] = useState<boolean>(false)
-	const dispatch = useDispatch()
-	const navigate = useNavigate()
-	const param = useParams()
-	const navigation = useNavigation()
+	const [sendFormClicked, setSendFormClicked] = useState<boolean>(false);
+	const [showCartResult, setShowCartResult] = useState<boolean>(false);
+	const [isError, setIsError] = useState<boolean>(false);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const param = useParams();
+	const navigation = useNavigation();
 
-	const previousData = useSelector((state: any) => state)
+	const previousData = useSelector((state: any) => state);
 
 	const previousButtonHandler = () => {
-		navigate(`../${param.typeId}`)
-		dispatch(dataActions.addUserData({ ...userData }))
-	}
+		navigate(`../${param.typeId}`);
+		dispatch(dataActions.addUserData({ ...userData }));
+	};
 
 	const {
 		value: enteredName,
@@ -42,7 +42,7 @@ const MainSubmissionComplain: React.FC = props => {
 		hasError: hasNameError,
 		valueChangeHandler: nameChangeHandler,
 		inputBlurHandler: nameBlurHandler,
-	} = useInput((value: string) => value !== '', previousData.userData.nameSurname)
+	} = useInput((value: string) => value !== '', previousData.userData.nameSurname);
 
 	const {
 		value: enteredEmail,
@@ -50,7 +50,7 @@ const MainSubmissionComplain: React.FC = props => {
 		hasError: hasEmailError,
 		valueChangeHandler: emailChangeHandler,
 		inputBlurHandler: emailBlurHandler,
-	} = useInput((value: string) => value.match(regExpEmail), previousData.userData.email)
+	} = useInput((value: string) => value.match(regExpEmail), previousData.userData.email);
 
 	const {
 		value: enteredNumber,
@@ -58,15 +58,15 @@ const MainSubmissionComplain: React.FC = props => {
 		hasError: hasNumberError,
 		valueChangeHandler: numberChangeHandler,
 		inputBlurHandler: numberBlurHandler,
-	} = useInput((value: string) => value.match(regExpNumber), previousData.userData.phoneNumber)
+	} = useInput((value: string) => value.match(regExpNumber), previousData.userData.phoneNumber);
 
-	const { value: enteredAdress, valueChangeHandler: adressHandler } = useInputNotRequired(previousData.userData.adress)
+	const { value: enteredAdress, valueChangeHandler: adressHandler } = useInputNotRequired(previousData.userData.adress);
 	const { value: enteredZipCode, valueChangeHandler: zipCodeHandler } = useInputNotRequired(
 		previousData.userData.zipCode
-	)
-	const { value: enteredCity, valueChangeHandler: cityHandler } = useInputNotRequired(previousData.userData.city)
+	);
+	const { value: enteredCity, valueChangeHandler: cityHandler } = useInputNotRequired(previousData.userData.city);
 
-	const correctContent = enteredNameIsValid && enteredEmailIsValid && enteredNumberIsValid
+	const correctContent = enteredNameIsValid && enteredEmailIsValid && enteredNumberIsValid;
 
 	const userData = {
 		nameSurname: enteredName,
@@ -75,39 +75,39 @@ const MainSubmissionComplain: React.FC = props => {
 		adress: enteredAdress,
 		zipCode: enteredZipCode,
 		city: enteredCity,
-	}
+	};
 
 	const submitFormHandler = (e: FormEvent) => {
-		e.preventDefault()
+		e.preventDefault();
 
-		setSendFormClicked(true)
+		setSendFormClicked(true);
 		if (!correctContent) {
-			return
+			return;
 		}
-		setShowCartResult(true)
+		setShowCartResult(true);
 
-		dispatch(dataActions.addUserData({ ...userData }))
-		const newData = { id: previousData.id, ...previousData.registrationData, ...userData }
+		dispatch(dataActions.addUserData({ ...userData }));
+		const newData = { id: previousData.id, ...previousData.registrationData, ...userData };
 
 		const sendData = async () => {
 			const response = await fetch('https://form-17894-default-rtdb.europe-west1.firebasedatabase.app/complain.json', {
 				method: 'POST',
 				body: JSON.stringify(newData),
-			})
+			});
 			if (!response.ok) {
-				setIsError(true)
+				setIsError(true);
 			}
-		}
-		sendData()
-		return userData
-	}
+		};
+		sendData();
+		return userData;
+	};
 
 	const hideResultCart = () => {
-		setShowCartResult(false)
-		dispatch(dataActions.defaultData())
-		dispatch(dataActions.addId(''))
-		navigate('..')
-	}
+		setShowCartResult(false);
+		dispatch(dataActions.defaultData());
+		dispatch(dataActions.addId(''));
+		navigate('..');
+	};
 
 	return (
 		<>
@@ -195,13 +195,15 @@ const MainSubmissionComplain: React.FC = props => {
 					<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
 				</div>
 				<div className={classes.buttons}>
-					<button onClick={previousButtonHandler}>Poprzedni krok</button>
+					<button className={classes.prevButton} onClick={previousButtonHandler}>
+						<span>Poprzedni krok</span>
+					</button>
 					<button>Wyślij formularz</button>
 				</div>
 			</Form>
 			{showCartResult && <CartResult onClick={hideResultCart} currectState={navigation.state} isError={isError} />}
 		</>
-	)
-}
+	);
+};
 
-export default MainSubmissionComplain
+export default MainSubmissionComplain;

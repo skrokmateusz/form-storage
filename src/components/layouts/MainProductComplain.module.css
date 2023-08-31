@@ -6,7 +6,8 @@
 	font-size: 1.6rem;
 }
 
-.textarea-div, .dragdrop-div {
+.textarea-div,
+.dragdrop-div {
 	display: flex;
 	flex-direction: column;
 }
@@ -19,10 +20,10 @@
 	color: #214bff;
 }
 
-.textarea-label, .description {
+.textarea-label,
+.description {
 	font-size: 1.4rem;
 }
-
 
 .textarea {
 	margin: 0.5em 0;
@@ -63,13 +64,12 @@
 }
 
 .input {
-		border: 1px solid #c8c8c8;
+	border: 1px solid #c8c8c8;
 }
 
 .invalid {
 	border: 1px solid #b40e0e;
 }
-
 
 .invalid-textarea {
 	border: 1px solid #b40e0e;
@@ -83,6 +83,32 @@
 	position: relative;
 	top: 5rem;
 	margin-bottom: 5rem;
+}
+
+.prevButton {
+	background-color: white;
+	border: 1px solid #ccc;
+	width: 30px;
+	margin-right: 2rem;
+	color: black;
+}
+
+.prevButton span {
+	display: none;
+}
+
+@media (min-width: 576px) {
+	.prevButton {
+		background-color: #214bff;
+		border: none;
+		width: 21rem;
+		margin-right: 0;
+		color: white;
+	}
+
+	.prevButton span {
+		display: block;
+	}
 }
 
 @media (min-width: 992px) {
@@ -159,7 +185,8 @@
 		width: 435px;
 	}
 
-	.textarea-div, .dragdrop-div {
+	.textarea-div,
+	.dragdrop-div {
 		display: flex;
 		flex-direction: row;
 		margin-top: 1rem;
@@ -170,7 +197,7 @@
 		margin-top: 2rem;
 	}
 
-	.textarea{
+	.textarea {
 		min-height: 120px;
 		width: 435px;
 		border-radius: 0.5rem;

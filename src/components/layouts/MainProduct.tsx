@@ -201,13 +201,13 @@ const MainProductQuestion: React.FC = () => {
 				<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
 			</div>
 			<div className={classes.buttons}>
-				<button
+				<button className={classes.prevButton}
 					onClick={() => {
 						dispatch(dataActions.defaultData())
 						dispatch(dataActions.addId(''))
 						navigate(`..`)
 					}}>
-					Poprzedni krok
+					<span>Poprzedni krok</span>
 				</button>
 
 				<button>Kolejny krok</button>

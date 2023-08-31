@@ -125,7 +125,7 @@ const MainSubmission: React.FC<{}> = props => {
 					<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
 				</div>
 				<div className={classes.buttons}>
-					<button onClick={previousButtonHandler}>Poprzedni krok</button>
+					<button className={classes.prevButton} onClick={previousButtonHandler}><span>Poprzedni krok</span></button>
 					<button>Wyślij formularz</button>
 				</div>
 			</Form>
