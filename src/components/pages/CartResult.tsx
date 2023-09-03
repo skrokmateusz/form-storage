@@ -8,17 +8,17 @@ const CartResult: React.FC<{onClick: () => void, currectState: string, isError: 
 
 	const sentCorrectForm = (
 		<React.Fragment>
-			<p>Dziękujemy za podzielenie się opinią. Formularz został wysłany poprawnie.</p>
+			<p>Thank you for sharing your feedback. The form has been successfully submitted.</p>
 
-			<button onClick={props.onClick}>Zamknij</button>
+			<button onClick={props.onClick}>Close</button>
 		</React.Fragment>
 	)
 
 	const sentIncorrectForm = (
 		<React.Fragment>
-			<p>Wystąpił błąd wysyłania. Prosimy spróbuj później</p>
+			<p>An error occurred while sending. Please try again later."</p>
 
-			<button onClick={props.onClick}>Zamknij</button>
+			<button onClick={props.onClick}>Close</button>
 		</React.Fragment>
 	)
 

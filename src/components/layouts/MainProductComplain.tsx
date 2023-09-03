@@ -118,17 +118,16 @@ const MainProductComplain: React.FC = () => {
 			<div className={classes.container}>
 				<div>
 					<p>
-						Odpowiedzi na poniższe pytania pozwolą nam na wyjaśnienie Pani / Pana zgłoszenia. Uprzejmie dziękujemy za
-						poświęcony czas.
+					Answers to the following questions will help us clarify your report. We sincerely thank you for your time.
 					</p>
 				</div>
 				<Input
-					label="Nazwa / smak *"
+					label="Name / flavor *"
 					className={`${hasFlavourError ? `${classes.invalid} ${classes.input}` : `${classes.input}`}  ${
 						nextStepClicked && !enteredFlavourIsValid ? `${classes.invalid} ${classes.input}` : classes.input
 					} `}
 					tips={
-						<a href="" className={classes.tips} data-tip="Informacja na froncie produktu">
+						<a href="" className={classes.tips} data-tip="Front product information">
 							<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 						</a>
 					}
@@ -141,15 +140,15 @@ const MainProductComplain: React.FC = () => {
 					}}
 				/>
 				<div className={classes['invalid-input']}>
-					{hasFlavourError || (nextStepClicked && !enteredFlavour) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+					{hasFlavourError || (nextStepClicked && !enteredFlavour) ? <p>* Filling out this field is required</p> : ''}
 				</div>
 				<Input
-					label="Data ważności i numer partii *"
+					label="Expiration date and batch number *"
 					className={`${hasExpirationDateError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
 						nextStepClicked && !enteredExpirationDate ? `${classes.invalid} ${classes.input}` : classes.input
 					}`}
 					tips={
-						<a href="" className={classes.tips} data-tip="Całościowy nadruk z opakowania: np. 05.2020 1836 L808052YX.">
+						<a href="" className={classes.tips} data-tip="Overall print on the packaging: e.g. 05.2020 1836 L808052YX.">
 							<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 						</a>
 					}
@@ -163,7 +162,7 @@ const MainProductComplain: React.FC = () => {
 				/>
 				<div className={classes['invalid-input']}>
 					{hasExpirationDateError || (nextStepClicked && !enteredExpirationDate) ? (
-						<p>* Wypełnienie tego pola jest wymagane</p>
+						<p>* Filling out this field is required</p>
 					) : (
 						''
 					)}
@@ -171,7 +170,7 @@ const MainProductComplain: React.FC = () => {
 
 				<div className={classes['textarea-div']}>
 					<label className={classes['textarea-label']} htmlFor="textarea">
-						<div>Opis sytuacji*</div>
+						<div>Description of the situation*</div>
 					</label>
 					<textarea
 						className={`${hasMessageError ? `${classes['invalid-textarea']} ${classes.textarea}` : classes.textarea}} ${
@@ -184,7 +183,7 @@ const MainProductComplain: React.FC = () => {
 						onBlur={messageBlurHandler}></textarea>
 				</div>
 				<div className={classes['invalid-input']}>
-					{hasMessageError || (nextStepClicked && !enteredMessage) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+					{hasMessageError || (nextStepClicked && !enteredMessage) ? <p>* Filling out this field is required</p> : ''}
 				</div>
 
 				<Input
@@ -195,11 +194,11 @@ const MainProductComplain: React.FC = () => {
 						<a
 							href="#"
 							className={classes.tips}
-							data-tip="Prosimy o podanie nazwy sklepu i jego adresu. Pozwoli nam to na sprawdzenie warunków przechowywania naszych towarów">
+							data-tip="Please provide the store name and its address. This will allow us to check the storage conditions of our goods">
 							<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 						</a>
 					}
-					label="Gdzie i kiedy zakupiono produkt*"
+					label="Where and when was the product purchased*"
 					input={{
 						types: 'text',
 						name: 'purchase-place',
@@ -210,7 +209,7 @@ const MainProductComplain: React.FC = () => {
 				/>
 				<div className={classes['invalid-input']}>
 					{hasPurchasePlaceError || (nextStepClicked && !enteredPurchasePlace) ? (
-						<p>* Wypełnienie tego pola jest wymagane</p>
+						<p>* Filling out this field is required</p>
 					) : (
 						''
 					)}
@@ -218,28 +217,28 @@ const MainProductComplain: React.FC = () => {
 
 				<OptionInput
 					className={`${nextStepClicked && !enteredPackageKept ? classes.invalid : ''}`}
-					label="Czy zostało zachowane opakowanie*"
+					label="Has the packaging been retained*"
 					name="is-package"
 					value={enteredPackageKept}
 					onChange={packageKeptHandler}
 					options={[
-						'tak, posiadam opakowanie wraz z produktem',
-						'tak, posiadam puste opakowanie',
-						'nie, posiadam tylko produkt',
-						'nie, opakowanie z produktem zostało wyrzucone',
+						'Yes, I have the packaging with the product',
+						'Yes, I have the empty packaging',
+						'No, I only have the product',
+						'No, the packaging with the product has been discarded',
 					]}
 				/>
 				<div className={classes['invalid-input']}>
-					{nextStepClicked && !enteredPackageKept ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+					{nextStepClicked && !enteredPackageKept ? <p>* Filling out this field is required</p> : ''}
 				</div>
 				<div className={classes['dragdrop-div']}>
 					<label htmlFor="text">
-						<div className={classes.description}>Prosimy o dołączenie zdjęć opakowania i produktu</div>
+						<div className={classes.description}>Please attach photos of the packaging and the product</div>
 						<div>
 							<a
 								href="#"
 								className={classes.tips}
-								data-tip="Prosimy o zrobienie zdjęć min. całego opakowania oraz zamknięcia. Mile widzane będą zdjęcia każdej strony produktu">
+								data-tip="We kindly request you to take photos of at least the entire packaging and the closure. Photos of each side of the product are highly appreciated">
 								<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 							</a>
 						</div>
@@ -248,27 +247,27 @@ const MainProductComplain: React.FC = () => {
 					<FileInput />
 				</div>
 
-				<p>Aby kompleksowo i możliwe szybko odpowiedzieć na zgłoszenie prosimy o podanie dodatkowych informacji:</p>
+				<p>In order to provide a comprehensive and timely response to your report, please provide additional information:</p>
 				<OptionInput
 					className=""
-					label="Rodzaj opakowania"
+					label="Type of packaging"
 					name="package"
 					value={enteredPackageType}
 					onChange={packageTypeHandler}
 					options={[
-						'kartonik',
-						'karton',
-						'butelka szklana',
-						'butelka plastikowa',
-						'puszka',
-						'saszetka',
-						'opakowanie plastikowe',
-						'inne',
+						'small cardboard box',
+						'cardboard box',
+						'glass bottle',
+						'plastic bottle',
+						'can',
+						'sachet',
+						'plastic packaging',
+						'others',
 					]}
 				/>
 				<OptionInput
 					className=""
-					label="Pojemność / gramatura"
+					label="Capacity / Grammage"
 					name="capacity"
 					value={enteredPackageCapacity}
 					onChange={packageCapacityHandler}
@@ -293,7 +292,7 @@ const MainProductComplain: React.FC = () => {
 				<Input
 					tips=""
 					className={classes.input}
-					label="Prosimy opisać stan opakowania"
+					label="Please describe the condition of the packaging"
 					input={{
 						types: 'text',
 						name: '',
@@ -305,7 +304,7 @@ const MainProductComplain: React.FC = () => {
 				<Input
 					tips=""
 					className={classes.input}
-					label="Gdzie i jak długo produkt był przechowywany przed otwarciem"
+					label="Where and for how long was the product stored before opening"
 					input={{
 						types: 'text',
 						value: enteredPackageStorageBefore,
@@ -315,13 +314,13 @@ const MainProductComplain: React.FC = () => {
 					}}
 				/>
 				<DateInput
-					label="Data pierwszego otwarcia produktu"
+					label="Date of first opening of the product"
 					input={{ types: 'date', id: '', value: enteredFirstOpen, onChange: firstOpenHandler, onBlur: () => {} }}
 				/>
 				<Input
 					tips=""
 					className={classes.input}
-					label="Gdzie i jak długo produkt był przechowywany po otwarciu"
+					label="Where and for how long was the product stored after opening"
 					input={{
 						types: 'text',
 						value: enteredPackageStorageAfter,
@@ -331,7 +330,7 @@ const MainProductComplain: React.FC = () => {
 					}}
 				/>
 				<DateInput
-					label="Kiedy zauważono zmiany w produkcie"
+					label="When were the changes in the product noticed"
 					input={{
 						types: 'date',
 						id: '',
@@ -340,7 +339,7 @@ const MainProductComplain: React.FC = () => {
 						onBlur: () => {},
 					}}
 				/>
-				<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
+				<p className={classes['need-inputs']}>* Fields marked with an asterisk (*) are required.</p>
 			</div>
 			<div className={classes.buttons}>
 				<button className={classes.prevButton}
@@ -349,10 +348,10 @@ const MainProductComplain: React.FC = () => {
 						dispatch(dataActions.addId(''))
 						navigate(`..`)
 					}}>
-					<span>Poprzedni krok</span>
+					<span>Previous step</span>
 				</button>
 
-				<button>Kolejny krok</button>
+				<button>Next step</button>
 			</div>
 		</form>
 	)

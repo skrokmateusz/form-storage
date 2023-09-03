@@ -16,11 +16,11 @@ const CartTypeAction: React.FC = () => {
 	return (
 		<>
 			<Card>
-				<Header normalTitle="" highlightedTitle="Temat zgłoszenia" />
+				<Header normalTitle="" highlightedTitle="Subject of the report" />
 				<MainFirstPage onChosenBox={onBox} />
 			</Card>
 			<Footer className=''>
-				<Button to={`/${currentAction}`} className="" title="Następny krok" />
+				<Button to={`/${currentAction}`} className="" title="Next step" />
 			</Footer>
 		</>
 	)

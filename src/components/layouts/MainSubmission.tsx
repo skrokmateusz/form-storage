@@ -92,7 +92,7 @@ const MainSubmission: React.FC<{}> = props => {
 				<div className={classes.container}>
 					<Input
 						className={`${hasNameError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}
-						label="Imię i nazwisko *"
+						label="First name and last name *"
 						tips=""
 						input={{
 							types: 'text',
@@ -103,11 +103,11 @@ const MainSubmission: React.FC<{}> = props => {
 						}}
 					/>
 					<div className={classes['invalid-input']}>
-						{hasNameError || (sendFormClicked && !enteredName) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+						{hasNameError || (sendFormClicked && !enteredName) ? <p>* Filling out this field is required</p> : ''}
 					</div>
 					<Input
 						className={`${hasEmailError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} `}
-						label="Adres e-mail *"
+						label="Email address *"
 						tips=""
 						input={{
 							types: 'text',
@@ -118,15 +118,15 @@ const MainSubmission: React.FC<{}> = props => {
 						}}
 					/>
 					<div className={classes['invalid-input']}>
-						{sendFormClicked && !enteredEmail ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
-						{hasEmailError ? <p>* Adres email jest nieprawidłowy</p> : ''}
+						{sendFormClicked && !enteredEmail ? <p>* Filling out this field is required</p> : ''}
+						{hasEmailError ? <p>* The email address is invalid</p> : ''}
 					</div>
 
-					<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
+					<p className={classes['need-inputs']}>Fields marked with an asterisk (*) are required</p>
 				</div>
 				<div className={classes.buttons}>
-					<button className={classes.prevButton} onClick={previousButtonHandler}><span>Poprzedni krok</span></button>
-					<button>Wyślij formularz</button>
+					<button className={classes.prevButton} onClick={previousButtonHandler}><span>Previous step</span></button>
+					<button>Submit the form</button>
 				</div>
 			</Form>
 			{showCartResult && <CartResult onClick={hideResultCart} currectState={navigation.state} isError={isError} />}

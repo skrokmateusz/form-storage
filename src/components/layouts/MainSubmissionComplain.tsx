@@ -114,7 +114,7 @@ const MainSubmissionComplain: React.FC = props => {
 			<Form method="POST" onSubmit={submitFormHandler}>
 				<div className={classes.container}>
 					<Input
-						label="Imię i nazwisko *"
+						label="First name and last name *"
 						className={`${hasNameError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
 							sendFormClicked && !enteredNameIsValid ? `${classes.invalid} ${classes.input}` : classes.input
 						} `}
@@ -128,13 +128,13 @@ const MainSubmissionComplain: React.FC = props => {
 						}}
 					/>
 					<div className={classes['invalid-input']}>
-						{hasNameError || (sendFormClicked && !enteredName) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+						{hasNameError || (sendFormClicked && !enteredName) ? <p>* Filling out this field is required</p> : ''}
 					</div>
 					<Input
 						className={`${hasEmailError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
 							sendFormClicked && !enteredEmailIsValid ? `${classes.invalid} ${classes.input}` : classes.input
 						} `}
-						label="Adres e-mail *"
+						label="Email address *"
 						tips=""
 						input={{
 							types: 'text',
@@ -145,15 +145,15 @@ const MainSubmissionComplain: React.FC = props => {
 						}}
 					/>
 					<div className={classes['invalid-input']}>
-						{sendFormClicked && !enteredEmail ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
-						{hasEmailError ? <p>* Adres email jest nieprawidłowy</p> : ''}
+						{sendFormClicked && !enteredEmail ? <p>* Filling out this field is required</p> : ''}
+						{hasEmailError ? <p>* The email address is invalid</p> : ''}
 					</div>
 
 					<Input
 						className={`${hasNumberError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
 							sendFormClicked && !enteredNumberIsValid ? `${classes.invalid} ${classes.input}` : classes.input
 						} `}
-						label="Numer telefonu *"
+						label="Phone number *"
 						tips=""
 						input={{
 							types: 'text',
@@ -164,17 +164,17 @@ const MainSubmissionComplain: React.FC = props => {
 						}}
 					/>
 					<div className={classes['invalid-input']}>
-						{sendFormClicked && !enteredNumber ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
-						{hasNumberError ? <p>* Nieprawidłowy format telefonu. Prawidłowy format 123456789</p> : ''}
+						{sendFormClicked && !enteredNumber ? <p>* Filling out this field is required</p> : ''}
+						{hasNumberError ? <p>* Invalid phone format. The correct format is 123456789</p> : ''}
 					</div>
 					<Input
 						className={classes.input}
-						label="Ulica, nr domu"
+						label="Street, house number"
 						tips={
 							<a
 								href=""
 								className={classes.tips}
-								data-tip="Dane to będą potrzebne w sytuacji, jeżeli ocena opakowania będzie konieczna">
+								data-tip="These details will be needed in case an assessment of the packaging is required">
 								<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 							</a>
 						}
@@ -182,23 +182,23 @@ const MainSubmissionComplain: React.FC = props => {
 					/>
 					<Input
 						className={classes.input}
-						label="Kod pocztowy"
+						label="Zip code"
 						tips=""
 						input={{ types: 'text', name: '', value: enteredZipCode, onChange: zipCodeHandler, onBlur: () => {} }}
 					/>
 					<Input
 						className={classes.input}
-						label="Miejscowość"
+						label="City"
 						tips=""
 						input={{ types: 'text', name: '', value: enteredCity, onChange: cityHandler, onBlur: () => {} }}
 					/>
-					<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
+					<p className={classes['need-inputs']}>Fields marked with an asterisk (*) are required</p>
 				</div>
 				<div className={classes.buttons}>
 					<button className={classes.prevButton} onClick={previousButtonHandler}>
-						<span>Poprzedni krok</span>
+						<span>Previous step</span>
 					</button>
-					<button>Wyślij formularz</button>
+					<button>Submit the form</button>
 				</div>
 			</Form>
 			{showCartResult && <CartResult onClick={hideResultCart} currectState={navigation.state} isError={isError} />}

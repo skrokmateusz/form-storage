@@ -24,6 +24,7 @@
 .text {
 	position: absolute;
 	left: 100px;
+
 }
 
 .choice-box-clicked {
@@ -88,8 +89,10 @@
 	}
 
 	.text {
+		width: 100%;
 		position: relative;
 		left: 0;
+
 	}
 
 	.choice-box .text,

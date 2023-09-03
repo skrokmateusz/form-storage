@@ -19,7 +19,7 @@ const OptionInput: React.FC<{
 				value={props.value}
 				onChange={props.onChange}>
 				<option value="none" hidden>
-					Wybierz...
+					Select...
 				</option>
 				{props.options.map((option: string) => (
 					<option key={option} value={option}>

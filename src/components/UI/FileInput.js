@@ -63,7 +63,7 @@ const FileInput = () => {
 		<div className={classes.container}>
 			<div className={classes.dragdrop} onClick={() => inputRef.current.click()}>
 				<p className={classes.header}>
-					<span>Wybierz</span> pliki z dysku
+					<span>Select</span> files from your disk
 				</p>
 				<input type="file" hidden multiple onChange={addFiles} ref={inputRef} />
 			</div>

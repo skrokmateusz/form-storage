@@ -23,11 +23,11 @@ const CartSubmissionComplain: React.FC = props => {
 
 	let normalTitle
 	if (param.typeId === 'complain') {
-		normalTitle = 'Reklamacja produkowa'
+		normalTitle = 'Product complain'
 	} else if (param.typeId === 'question') {
-		normalTitle = 'Pytanie dotyczące produktu, składników, itd.'
+		normalTitle = 'Questions regarding the product, ingredients, etc'
 	} else {
-		normalTitle = 'Opinie, sugestie dotyczące produktów'
+		normalTitle = 'Opinions and suggestions regarding products'
 	}
 
 	return (
@@ -35,7 +35,7 @@ const CartSubmissionComplain: React.FC = props => {
 			<Card>
 				<Header
 					normalTitle={normalTitle}
-					highlightedTitle="Dane kontaktowe"
+					highlightedTitle="Contact information"
 				/>
 				{param.typeId === 'complain' && <MainSubmissionComplain />}
 				{param.typeId === 'question' && <MainSubmission />}

@@ -20,17 +20,17 @@ const CartRegistration: React.FC = () => {
 
 	let normalTitle = ''
 	if (param.typeId === 'complain') {
-		normalTitle = 'Reklamacja produktowa'
+		normalTitle = 'Product complain'
 	} else if (param.typeId === 'question') {
-		normalTitle = 'Pytanie dotyczące produktu, składników, itd.'
+		normalTitle = 'Questions regarding the product, ingredients, etc.'
 	} else {
-		normalTitle = 'Opinie, sugestie dotyczące produktów'
+		normalTitle = 'Opinions and suggestions regarding products'
 	}
 
 	return (
 		<div>
 			<Card>
-				<Header normalTitle={normalTitle} highlightedTitle="Dane produktowe" />
+				<Header normalTitle={normalTitle} highlightedTitle="Product details" />
 				{param.typeId === 'complain' ? <MainProductComplain /> : null}
 				{param.typeId === 'question' || param.typeId === 'comment' ? <MainProduct /> : null}
 			</Card>

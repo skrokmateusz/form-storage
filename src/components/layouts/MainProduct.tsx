@@ -79,12 +79,12 @@ const MainProductQuestion: React.FC = () => {
 		<form onSubmit={submitHandler}>
 			<div className={classes.container}>
 				<Input
-					label="Nazwa / smak *"
+					label="Name / flavor *"
 					className={`${hasFlavourError ? `${classes.invalid} ${classes.input}` : `${classes.input}`}  ${
 						nextStepClicked && !enteredFlavourIsValid ? `${classes.invalid} ${classes.input}` : classes.input
 					} `}
 					tips={
-						<a href="" className={classes.tips} data-tip="Informacja na froncie produktu">
+						<a href="" className={classes.tips} data-tip="Front product information">
 							<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 						</a>
 					}
@@ -97,15 +97,15 @@ const MainProductQuestion: React.FC = () => {
 					}}
 				/>
 				<div className={classes['invalid-input']}>
-					{hasFlavourError || (nextStepClicked && !enteredFlavour) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+					{hasFlavourError || (nextStepClicked && !enteredFlavour) ? <p>* Filling out this field is required</p> : ''}
 				</div>
 				<Input
-					label="Data ważności i numer partii *"
+					label="Expiration date and batch number *"
 					className={`${hasExpirationDateError ? `${classes.invalid} ${classes.input} ` : `${classes.input}`} ${
 						nextStepClicked && !enteredExpirationDate ? `${classes.invalid} ${classes.input}` : classes.input
 					}`}
 					tips={
-						<a href="" className={classes.tips} data-tip="Całościowy nadruk z opakowania: np. 05.2020 1836 L808052YX.">
+						<a href="" className={classes.tips} data-tip="Overall print on the packaging: e.g. 05.2020 1836 L808052YX.">
 							<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 						</a>
 					}
@@ -119,14 +119,14 @@ const MainProductQuestion: React.FC = () => {
 				/>
 				<div className={classes['invalid-input']}>
 					{hasExpirationDateError || (nextStepClicked && !enteredExpirationDate) ? (
-						<p>* Wypełnienie tego pola jest wymagane</p>
+						<p>* Filling out this field is required</p>
 					) : (
 						''
 					)}
 				</div>
 				<div className={classes['textarea-div']}>
 					<label className={classes['textarea-label']} htmlFor="textarea">
-						<div>Opis sytuacji*</div>
+						<div>Description of the situation*</div>
 					</label>
 					<textarea
 						className={`${hasMessageError ? `${classes['invalid-textarea']} ${classes.textarea}` : classes.textarea}} ${
@@ -139,16 +139,16 @@ const MainProductQuestion: React.FC = () => {
 						onBlur={messageBlurHandler}></textarea>
 				</div>
 				<div className={classes['invalid-input']}>
-					{hasMessageError || (nextStepClicked && !enteredMessage) ? <p>* Wypełnienie tego pola jest wymagane</p> : ''}
+					{hasMessageError || (nextStepClicked && !enteredMessage) ? <p>* Filling out this field is required</p> : ''}
 				</div>
 				<div className={classes['dragdrop-div']}>
 					<label htmlFor="text">
-						<div className={classes.description}>Prosimy o dołączenie zdjęć opakowania i produktu</div>
+						<div className={classes.description}>Please attach photos of the packaging and the product.</div>
 						<div>
 							<a
 								href="#"
 								className={classes.tips}
-								data-tip="Prosimy o zrobienie zdjęć min. całego opakowania oraz zamknięcia. Mile widzane będą zdjęcia każdej strony produktu">
+								data-tip="We kindly request you to take photos of at least the entire packaging and the closure. Photos of each side of the product are highly appreciated">
 								<FontAwesomeIcon icon={faCircleQuestion} className={classes.icon} />
 							</a>
 						</div>
@@ -159,24 +159,24 @@ const MainProductQuestion: React.FC = () => {
 
 				<OptionInput
 					className=""
-					label="Rodzaj opakowania"
+					label="Type of packaging"
 					name="package"
 					value={enteredPackageType}
 					onChange={packageTypeHandler}
 					options={[
-						'kartonik',
-						'karton',
-						'butelka szklana',
-						'butelka plastikowa',
-						'puszka',
-						'saszetka',
-						'opakowanie plastikowe',
-						'inne',
+						'small cardboard box',
+						'cardboard box',
+						'glass bottle',
+						'plastic bottle',
+						'can',
+						'sachet',
+						'plastic packaging',
+						'others',
 					]}
 				/>
 				<OptionInput
 					className=""
-					label="Pojemność / gramatura"
+					label="Capacity / Grammage"
 					name="capacity"
 					value={enteredPackageCapacity}
 					onChange={packageCapacityHandler}
@@ -195,10 +195,10 @@ const MainProductQuestion: React.FC = () => {
 						'1,5l',
 						'1,75l',
 						'2l',
-						'inne',
+						'others',
 					]}
 				/>
-				<p className={classes['need-inputs']}>* Pola oznaczone gwiazdką są wymagane</p>
+				<p className={classes['need-inputs']}>Fields marked with an asterisk (*) are required.</p>
 			</div>
 			<div className={classes.buttons}>
 				<button className={classes.prevButton}
@@ -207,10 +207,10 @@ const MainProductQuestion: React.FC = () => {
 						dispatch(dataActions.addId(''))
 						navigate(`..`)
 					}}>
-					<span>Poprzedni krok</span>
+					<span>Previous step</span>
 				</button>
 
-				<button>Kolejny krok</button>
+				<button>Next step</button>
 			</div>
 		</form>
 	)

@@ -53,7 +53,7 @@ const Progressbar = () => {
 
 	return (
 		<div className={classes.container}>
-			<p>Krok:</p>
+			<p>Step:</p>
 			{pathname === '/' && step1}
 			{pathname === `/${param.typeId}` && step2}
 			{pathname === `/${param.typeId}/submission` && step3}
